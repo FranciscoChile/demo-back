@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
+import trackia.app.Trackia;
 
 import java.util.Date;
 import java.util.List;
@@ -30,6 +31,7 @@ public class CalculatorService {
 
     private static final String urlRandom = "https://www.random.org/strings/?num=1&len=32&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new";
 
+    @Trackia
     @Transactional
     public CalcResponse addition(CalcRequest calcRequest) {
         Operation operation = operationRepository.findByOperationType(calcRequest.getOperation());
@@ -50,6 +52,7 @@ public class CalculatorService {
 
     }
 
+    @Trackia
     public CalcResponse subtraction(CalcRequest calcRequest) {
         Operation operation = operationRepository.findByOperationType(calcRequest.getOperation());
         calcRequest.setCost(operation.getCost());
@@ -77,6 +80,7 @@ public class CalculatorService {
                 .build();
     }
 
+    @Trackia
     public CalcResponse multiplication(CalcRequest calcRequest) {
         Operation operation = operationRepository.findByOperationType(calcRequest.getOperation());
         calcRequest.setCost(operation.getCost());
@@ -100,6 +104,7 @@ public class CalculatorService {
                 .build();
     }
 
+    @Trackia
     public CalcResponse division(CalcRequest calcRequest) {
         Operation operation = operationRepository.findByOperationType(calcRequest.getOperation());
         calcRequest.setCost(operation.getCost());
@@ -127,6 +132,7 @@ public class CalculatorService {
                 .build();
     }
 
+    @Trackia
     public CalcResponse squareRoot(CalcRequest calcRequest) {
         Operation operation = operationRepository.findByOperationType(calcRequest.getOperation());
         calcRequest.setCost(operation.getCost());
@@ -154,6 +160,7 @@ public class CalculatorService {
                 .build();
     }
 
+    @Trackia
     public CalcResponse randomString(CalcRequest calcRequest) {
         Operation operation = operationRepository.findByOperationType(calcRequest.getOperation());
         calcRequest.setCost(operation.getCost());
@@ -172,6 +179,7 @@ public class CalculatorService {
                 .build();
     }
 
+    @Trackia
     public void loadData() {
 
         User user = User.builder()
@@ -198,6 +206,7 @@ public class CalculatorService {
         operationRepository.save(op6);
     }
 
+    @Trackia
     private boolean creditBalanceAvailable(CalcRequest calcRequest) {
 
         User user;
@@ -219,6 +228,7 @@ public class CalculatorService {
         return true;
     }
 
+    @Trackia
     private void saveOperation(Long userId, Operation operation, String result) {
 
         RecordOperation recordOperation = RecordOperation.builder()

@@ -80,7 +80,13 @@
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.2.0</version>
-		</dependency>		
+		</dependency>
+		<dependency>
+			<groupId>app.trackia</groupId>
+			<artifactId>trackia</artifactId>
+			<version>1.1.6</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

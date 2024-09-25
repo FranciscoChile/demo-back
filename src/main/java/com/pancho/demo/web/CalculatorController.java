@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import trackia.app.Trackia;
+
 
 @RestController
 @RequestMapping("/api/calculator")
@@ -20,6 +22,7 @@ public class CalculatorController {
     @Autowired
     private UserRecordService userRecordService;
 
+    @Trackia
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<APIResponse> addition(@RequestBody CalcRequest calcRequest) {
@@ -27,6 +30,7 @@ public class CalculatorController {
         return mediator.handler(calcRequest);
     }
 
+    @Trackia
     @PostMapping("/sub")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<APIResponse> subtraction(@RequestBody CalcRequest calcRequest) {
@@ -34,6 +38,7 @@ public class CalculatorController {
         return mediator.handler(calcRequest);
     }
 
+    @Trackia
     @PostMapping("/multi")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<APIResponse> multiplication(@RequestBody CalcRequest calcRequest) {
@@ -41,6 +46,7 @@ public class CalculatorController {
         return mediator.handler(calcRequest);
     }
 
+    @Trackia
     @PostMapping("/div")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<APIResponse> division(@RequestBody CalcRequest calcRequest) {
@@ -48,6 +54,7 @@ public class CalculatorController {
         return mediator.handler(calcRequest);
     }
 
+    @Trackia
     @PostMapping("/square")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<APIResponse> squareRoot(@RequestBody CalcRequest calcRequest) {
@@ -55,6 +62,7 @@ public class CalculatorController {
         return mediator.handler(calcRequest);
     }
 
+    @Trackia
     @PostMapping("/random")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<APIResponse> randomString(@RequestBody CalcRequest calcRequest) {
@@ -62,6 +70,7 @@ public class CalculatorController {
         return mediator.handler(calcRequest);
     }
 
+    @Trackia
     @PostMapping("/load-data")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<APIResponse> loadData() {
@@ -69,6 +78,7 @@ public class CalculatorController {
         return mediator.handler(calcRequest);
     }
 
+    @Trackia
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<APIResponse> getUserRecords() {
@@ -80,6 +90,7 @@ public class CalculatorController {
         return new ResponseEntity<>(apiResponse, apiResponse.getResponseCode());
     }
 
+    @Trackia
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<APIResponse> deleteUserRecord(@PathVariable String id) {

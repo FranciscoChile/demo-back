@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
+import trackia.app.Trackia;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ public class Mediator {
     @Autowired
     private CalculatorService calculatorService;
 
+    @Trackia
     public ResponseEntity<APIResponse> handler (CalcRequest calcRequest) {
 
         CalcResponse calcResponse = new CalcResponse();
